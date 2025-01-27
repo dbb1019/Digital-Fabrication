@@ -7,6 +7,8 @@
   <meta name="author" content="pat" />
   <meta name="keywords" content="drifting, pat, OWD" />
   <meta name="description" content="OWD winter template" />
+  <meta name="robots" content="noai">
+  <meta name="ai-permissions" content="noindex">
   <title>Week2</title>
 
   <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
@@ -41,25 +43,41 @@
     <h1>Week 2</h1>
     <div class="mainContent">
       <p>
-        Different types of media files play different roles on the web today. Images (JPEG, PNG, GIF, etc.) are commonly used for visuals such as product photos, icons, and backgrounds. Videos (MP4, etc.) offer dynamic storytelling and tutorials. Source code files (HTML, CSS, JavaScript, etc.) form the backbone of webpages, and enable structure, styling, and interactivity. Project files like PDFs and ZIP archives allow users to download bundled resources or documents.
+        Different types of media files play different roles on the web today. Images (JPEG, PNG, GIF, etc.) are commonly used for visuals such as product photos on some e-commercial sites, icons for navigation menus, and backgrounds. Videos (MP4, etc.) offer dynamic storytelling and tutorials. Source code files (HTML, CSS, JavaScript, etc.) form the backbone of webpages, and enable structure, styling, and interactivity. Project files like PDFs and ZIP archives allow users to download bundled resources or documents such as website templates, academic papers, etc.
       </p>
       <p>
-        Images used on the web should be optimized to ensure fast load times without sacrificing quality. Cropping removes unnecessary parts of an image, focusing attention on key elements. Resizing ensures the image fits its intended display size and avoids scaling issues. Compression reduces file size, with lossy compression (e.g., JPEG) and offers smaller files at the cost of some quality and lossless compression (e.g., PNG) preserving original quality but with larger file sizes. Tools like Photoshop can help with compression. WebP is an excellent modern format for compressed images with smaller sizes than JPEG/PNG.
+        Images used on the web should be optimized to ensure fast load times without sacrificing quality. Cropping removes unnecessary parts of an image, focusing attention on key elements. Resizing ensures the image fits its intended display size and avoids scaling issues. Compression reduces file size, with lossy compression (e.g., JPEG) and offers smaller files at the cost of some quality and lossless compression (e.g., PNG) preserving original quality but with larger file sizes. Tools like Photoshop can help with compression. I used Preview on Mac and online converter to compress this image. Also, WebP is a good modern format for compressed images with smaller sizes than JPEG/PNG.
       </p>
       <p>
-        <img src="images/week2example.jpg" alt="week2" width=99% title="image example"/>
+        <figure>
+          <img src="images/week2example.jpg" alt="week2" width=99% title="image example"/>
+        </figure>
       </p>
       <p>
-        Optimizing videos for the web involves capturing in a suitable resolution, cutting unnecessary sections, resizing to meet display requirements, and compressing to reduce file size. HD resolution (1280x720px) strikes a good balance between quality and size. Tools like Adobe Premiere Pro or some online converters allow resizing and compression. The MP4 format (H.264 codec) is widely supported for web use. 
+        Optimizing videos for the web involves capturing in a suitable resolution, cutting unnecessary sections, resizing to meet display requirements, and compressing to reduce file size. HD resolution (1280x720px) strikes a good balance between quality and size. Tools like Adobe Premiere Pro or some online converters allow resizing and compression. The MP4 format (H.264 codec) is widely supported for web use. I use free convertor online by Adobe to compress this video. 
       </p>
       <p>
         Hosting videos on platforms like YouTube or Vimeo offers additional benefits, including automated compression, global accessibility, and built-in playback controls. These platforms also handle video compatibility across devices, reducing the need for developers to encode videos for different browsers. However, embedding external videos can come with drawbacks like ads or branding that may disrupt user experience. Self-hosting small, optimized videos is a better option for cleaner integration.
       </p>
       <p>
-        <video width=99% autoplay controls loop>
-          <source src="images/week2example.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <figure>
+          <video width=100% autoplay controls loop>
+            <source src="images/week2example.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Generative Music Created by Annie </figcaption>
+        </figure>
+        
+      </p>
+      <p>
+        I chose the Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) license because it protects the integrity of my work while allowing others to share it non-commercially with proper attribution. This license ensures that my original vision remains intact by preventing unauthorized modifications or transformations. At the same time, it fosters accessibility by enabling redistribution for educational or personal use, aligning with my goal to share my work responsibly without risking its misuse or commercialization.
+      </p>
+      <p>
+        I wrote <code>meta name="robots" content="noai"</code>, 
+        <code>meta name="ai-permissions" content="noindex"</code> in this HTML file. 
+          These tell AI not to use or index my page in their training datasets. 
+          I chose to restrict the use of my documentation page for AI training purposes because I want to maintain control over my work. AI systems often aggregate data without understanding its context, which could dilute the intent behind my content.
+          I also added AI data statement in footnote.
       </p>
     </div>
     <br />
@@ -70,7 +88,7 @@
 
     <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
     <div class="footer">
-      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://dbb1019.github.io/Digital-Fabrication/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://dbb1019.github.io/Digital-Fabrication/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a> Use of this data by AI systems for training purposes is not permitted.</p>
     </div>
 
   <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
