@@ -233,3 +233,87 @@ ul {
 .imgLeft {
   float: left;
 }
+
+/* -- MARQUEE 样式 -- */
+.marquee {
+  position: relative;
+  height: 210px; /* 区域高度 */
+  background-color: #FFFFFF;
+  border: 1px solid #aaaaaa00;
+  padding: 5px;
+  margin: 5px;
+}
+
+.marquee ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+}
+
+.marquee li {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  cursor: pointer;
+}
+
+.marquee li a {
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-color: #5A799D; /* 圆点颜色 */
+  border-radius: 40%; /* 圆形 */
+  text-decoration: none;
+  position: relative; /* 确保伪类相对于 a 定位 */
+}
+
+/* 鼠标悬停时显示文字 */
+.marquee li a::after {
+  content: attr(data-week); /* 读取 data-week 属性值 */
+  position: absolute;
+  bottom: 60%; /* 相对位置 */
+  left: 60%;
+  transform: translateX(5%);
+  background-color: #FFFFFF; /* 背景色 */
+  font-family: arial, helvetica, arial, sans-serif;
+  color: #234163; /* 文字颜色 */
+  padding: 1px 1px;
+  font-size: 12px;
+  border: 1px solid #aaaaaa00;
+  border-radius: 0px;
+  white-space: nowrap;
+  display: none; 
+}
+
+.marquee li a:hover::after {
+  display: block; 
+}
+
+.marquee ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  height: 100%;
+  width: 100%;
+}
+
+.marquee li:nth-child(1) { top: 0%; left: 18%; }
+.marquee li:nth-child(2) { top: 5%; left: 55%; }
+.marquee li:nth-child(3) { top: 30%; left: 40%; }
+.marquee li:nth-child(4) { top: 40%; left: 93%; }
+.marquee li:nth-child(5) { top: 50%; left: 35%; }
+.marquee li:nth-child(6) { top: 60%; left: 18%; }
+.marquee li:nth-child(7) { top: 66%; left: 84%; }
+.marquee li:nth-child(8) { top: 80%; left: 12%; }
+.marquee li:nth-child(9) { top: 18%; left: 77%; }
+.marquee li:nth-child(10) { top: 25%; left: 10%; }
+.marquee li:nth-child(11) { top: 35%; left: 60%; }
+.marquee li:nth-child(12) { top: 45%; left: 1%; }
+.marquee li:nth-child(13) { top: 55%; left: 66%; }
+.marquee li:nth-child(14) { top: 72%; left: 42%; }
+.marquee li:nth-child(15) { top: 80%; left: 58%; }
+.marquee li:nth-child(16) { top: 95%; left: 74%; }
