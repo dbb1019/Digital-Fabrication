@@ -1,34 +1,72 @@
-<html lang="en">
-   
-   <style>
-        img {
-            width: 400px;
-        }
-    </style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="pat" />
+  <meta name="keywords" content="drifting, pat, OWD" />
+  <meta name="description" content="OWD winter template" />
+  <title>Week1</title>
+
+  <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
 </head>
 
 <body>
+
+<!-- Layout container starts -->
+<div id="layoutBox">
+
+  <!-- HEADER: controls the header layout, images, title and subTitle. -->
+  <div id="headerBox">
+    <div id="headerLeftBox">
+      <span class="title">
+        Week 1
+      </span>
+      <br />
+      <span class="subTitle">
+        Create a website
+      </span>
+    </div>
+    <div id="headerRightBox">
+      &nbsp;
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT : to add new headings, include a <h1> and then as many <p> blocks
+       as you'd like.  <h2> will create subheadings. To finish a section, include a
+       <br/> to clearly define it. -->
+  <div id="mainContent">
+    <a name="Week1"></a>
     <h1>Week 1</h1>
+    <div class="mainContent">
+      <p>Last week, I learned about building websites with GitHub Pages. This experience has introduced me to the basics of using Git for version control, which has proven invaluable in tracking changes and collaborating on different tasks. By pushing commits regularly and managing branches, I have developed an understanding of how to keep my project organized and efficient. Moreover, I learned HTML and CSS, which has allowed me to structure my website’s content and design its visual elements. And it helped me bring my ideas to life.
+      </p>
+      <p>For this website, I use VS Code to create HTML files to code everything and functions on the page and I also create a CSS file to create a template for all the pages to align items in the same way. I first created a GitHub repo and used the command line to open everything in VS Code. Then I downloaded an extension for VS Code to visualize HTML pages in real-time locally. After finishing the HTML page, I used Git commands in the terminal to commit my changes. First, I ran <code>git add .</code> to stage all the updated files, including the HTML and CSS files. Then I committed these changes with <code>git commit -m "xxx"</code>, which allowed me to add a descriptive message for the changes I made. Finally, I pushed the updates to the remote repository using <code>git push origin main</code>. </p>
+      <p>Throughout this process, I have also become more aware of how important proper documentation is for any success of the projects. Writing clear commit messages and maintaining a well-structured repository ensures that future modifications are easier to implement. I want to explore more styling techniques and incorporate frameworks or templetes that can make my website look more professional and visually appealing. In the coming weeks, I want to experiment with JavaScript, I hope to add interactive features (^_^). </p>
+      <img src="images/1.png" alt="1" width="150">
+      <img src="images/2.png" alt="2" width="150">
+      <img src="images/3.png" alt="3" width="250">
+    </div>
+    <br />
 
-    <p>This is my github repo: <a href="https://github.com/dbb1019/Digital-Fabrication" target="_blank">https://github.com/dbb1019/Digital-Fabrication</a></p>
-    
-    <img src="images/1.png" alt="1">
-    <img src="images/2.png" alt="2">
-    <img src="images/3.png" alt="3">
+    <a name="back"></a>
+    <h2>⬅<a href="index.html">Back</a></h2>
+    <br />
 
-    <p>Last week, I learned about building websites with GitHub Pages. This experience has introduced me to the basics of using Git for version control, which has proven invaluable in tracking changes and collaborating on different tasks. By pushing commits regularly and managing branches, I have developed an understanding of how to keep my project organized and efficient. Moreover, I learned HTML and CSS, which has allowed me to structure my website’s content and design its visual elements. And it helped me bring my ideas to life.
-    </p>
-    <p>For this website, I use VS Code to create HTML files to code everything and functions on the page and I also create a CSS file to create a template for all the pages to align items in the same way. I first created a GitHub repo and used the command line to open everything in VS Code. Then I downloaded an extension for VS Code to visualize HTML pages in real-time locally. After finishing the HTML page, I used Git commands in the terminal to commit my changes. First, I ran <code>git add .</code> to stage all the updated files, including the HTML and CSS files. Then I committed these changes with <code>git commit -m "xxx"</code>, which allowed me to add a descriptive message for the changes I made. Finally, I pushed the updates to the remote repository using <code>git push origin main</code>. </p>
-    <p>Throughout this process, I have also become more aware of how important proper documentation is for any success of the projects. Writing clear commit messages and maintaining a well-structured repository ensures that future modifications are easier to implement. I want to explore more styling techniques and incorporate frameworks or templetes that can make my website look more professional and visually appealing. In the coming weeks, I want to experiment with JavaScript, I hope to add interactive features (^_^). </p>
-    <p>⬅ <a href="project-management.html">Back</a></p>
-    <p>🏠 <a href="index.html">Home</a></p>
-    <p>© XUEDAN GAO 2025</a></p>
+    <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
+    <div class="footer">
+      <p>© XUEDAN GAO 2025</p>
+  </div>
+
+  <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
+       greater than the main content container.  Without this, when an a:hover is triggered in the main container,
+       IE reflows the page and cuts off the menu at the bottom of the main container. -->
+  <div class="spacer">
+  </div>
+
+</div>
+<!-- Layout container ends -->
+
 </body>
-
 </html>
