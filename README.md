@@ -1,5 +1,5 @@
-## Project Description
+## Annie's Digital Fabrication Diary
 
-* [live example](https://learning-zone.github.io/website-templates/drifting/)
+* [https://dbb1019.github.io/Digital-Fabrication/](https://dbb1019.github.io/Digital-Fabrication/)
 
-![alt text](https://github.com/learning-zone/Website-Templates/blob/master/assets/drifting.png "drifting")
+* [Website Template](https://learning-zone.github.io/website-templates/drifting/)
