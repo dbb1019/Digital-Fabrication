@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="pat" />
+  <meta name="keywords" content="drifting, pat, OWD" />
+  <meta name="description" content="OWD winter template" />
+  <title>Week3</title>
+
+  <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
+</head>
+
+<body>
+
+<!-- Layout container starts -->
+<div id="layoutBox">
+
+  <!-- HEADER: controls the header layout, images, title and subTitle. -->
+  <div id="headerBox">
+    <div id="headerLeftBox">
+      <span class="title">
+        Week 3
+      </span>
+      <br />
+      <span class="subTitle">
+        Computer-Aided Design
+      </span>
+    </div>
+    <div id="headerRightBox">
+      &nbsp;
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT : to add new headings, include a <h1> and then as many <p> blocks
+       as you'd like.  <h2> will create subheadings. To finish a section, include a
+       <br/> to clearly define it. -->
+  <div id="mainContent">
+    <a name="Week3"></a>
+    <h1>Week 3</h1>
+    <div class="mainContent">
+      <p>My background is in music technology (which is a cross between music, CS and ECE) and film. I have never drawn a design before using computer, nor used CAD, and I have basically never built a 3D model (except downloading a model from the Internet and modifying it for 3D printing), so this is a new attempt for me.
+        I think computer-aided design can help designers/artists make quantitative calculations in a rational way, and control the characteristics of sketches/models through parameters. It feels like a very practical skill that can find practical solutions for some wild ideas. I hope to use CAD to help me realize my ideas. I want to do a project related to clouds and sound at the end of the semester, but I haven't thought about it yet. I think I can use cad to draw.
+      </p>
+      <p>
+        The Sketcher workbench is a tool for creating 2D sketches. You can draw on a surface and then build it into 3D.
+        Real geometry is the basic elements used for the construction of the final model. This includes lines, circles, rectangles, etc. used to create the 3D model. Construction Geometry is used to provide reference and help during the design process, but they will not appear in the final 3D model.
+        Constraints can be established through Construction Geometry. And each shape can be precisely controlled by constraints to determine its size and relative position.
+      </p>
+
+      <p>
+        DoF in CAD refers to the number of parameters in a sketch that have not yet been constrained. The ideal situation for sketching is to create a fully constrained sketch, which means that all DoFs are restricted so that the sketch is completely fixed in size and position. 
+        Size constraints set specific lengths, angles, or diameters for elements; horizontal/vertical constraints keep points or lines horizontal or vertical; coincidence constraints make points coincide with points, points with lines, or lines with lines; equal constraints make two or more elements (such as line segments or circles) have the same length or size; perpendicular constraints ensure that lines maintain a perpendicular relationship; and symmetric constraints make two or more elements symmetrical relative to a line or point.
+        Full constraints make the design accurate and stable, avoiding undesired deformation or movement during the modeling process.
+      </p>
+    
+      <p>
+        I first made a button based on the content of the class. Then I wanted to do something on my own, and then I thought of making a Turntable, which looks very similar to a button, a cuboid with a cylinder on top. I then went online and found a reference of a real turntable and a turntable model.
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/Button.png" alt="Button" width=10% title="Button"/>
+          <figcaption>Button from Last Lecture</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/Turntable.png" alt="Turntable" width=100% title="Turntable"/>
+          <figcaption>Turntable1</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/Turntable2.png" alt="Turntable2" width=100% title="Turntable2"/>
+          <figcaption>Turntable2</figcaption>
+        </figure>
+        I used pad to make many cylinders and cuboids. I used revolution to make a Tonearm to give it some angles. I used loft to make a part in the upper left corner. Rods, spacers, and other components also use many additive and subtractive variations.
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/revolve.png" alt="revolve" width=20% title="revolve"/>
+          <figcaption>revolve</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/loft.png" alt="loft" width=20% title="loft"/>
+          <figcaption>loft</figcaption>
+        </figure>
+        Here are the various angles of the turntable I made:
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/top.png" alt="top" width=85% title="top"/>
+          <figcaption>top</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/front.png" alt="front" width=100% title="front"/>
+          <figcaption>front</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/right.png" alt="right" width=100% title="right"/>
+          <figcaption>right</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/left.png" alt="left" width=90% title="left"/>
+          <figcaption>left</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/rear.png" alt="rear" width=98% title="rear"/>
+          <figcaption>rear</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/bottom.png" alt="bottom" width=90% title="bottom"/>
+          <figcaption>bottom</figcaption>
+        </figure>
+      </p>
+
+      <p>
+        In my FreeCAD project, I used the Spreadsheet Workbench to define the parameters for the record base, turntable base, central rod, and spacer. The Tonearm part was drawn spontaneously. I think using spreadsheet is a way to manage parameters, and it is more suitable for batch modifications. We should try to avoid parameters that are decided on the spot because modifying them later can be very troublesome. It is like hard coding in programming—each value has to be opened and changed manually, and there is no way to update them all at once.
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/SpreadSheet.png" alt="SpreadSheet" width=40% title="SpreadSheet"/>
+          <figcaption>SpreadSheet</figcaption>
+        </figure>
+        <a href="zip/Turntable.FCStd.zip" download>Download ZIP File</a>
+      </p>
+      
+    </div>
+    <br />
+
+    <a name="back"></a>
+    <h2>⬅<a href="index.html">Back</a></h2>
+    <br />
+
+    <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
+    <div class="footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://xuedan-gao.com/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+  <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
+       greater than the main content container.  Without this, when an a:hover is triggered in the main container,
+       IE reflows the page and cuts off the menu at the bottom of the main container. -->
+  <div class="spacer">
+  </div>
+
+</div>
+<!-- Layout container ends -->
+
+</body>
+</html>
