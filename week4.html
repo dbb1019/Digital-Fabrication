@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="pat" />
+  <meta name="keywords" content="drifting, pat, OWD" />
+  <meta name="description" content="OWD winter template" />
+  <title>week4</title>
+
+  <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
+</head>
+
+<body>
+
+<!-- Layout container starts -->
+<div id="layoutBox">
+
+  <!-- HEADER: controls the header layout, images, title and subTitle. -->
+  <div id="headerBox">
+    <div id="headerLeftBox">
+      <span class="title">
+        Week 4
+      </span>
+      <br />
+      <span class="subTitle">
+        Computer-Controlled Cutting
+      </span>
+    </div>
+    <div id="headerRightBox">
+      &nbsp;
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT : to add new headings, include a <h1> and then as many <p> blocks
+       as you'd like.  <h2> will create subheadings. To finish a section, include a
+       <br/> to clearly define it. -->
+  <div id="mainContent">
+    <a name="Week4"></a>
+    <h1>Week 4</h1>
+    <div class="mainContent">
+      <p>
+        Waterjet cutting uses high-pressure water flow or an abrasive water stream to cut materials, making it suitable for metals, glass, ceramics, and other materials that are not heat-resistant. Vinyl cutting is mainly used for flexible materials such as stickers, films, and textiles. It can be used for trademarks, packaging, etc. Laser cutting uses a high-energy laser beam to melt or vaporize materials, allowing it to cut wood, arcrylic, and fabrics. It can cut complex patterns precisely.
+      </p>
+      <p>
+        Laser cutting uses a high-energy laser beam focused on the material surface, and causes the material to rapidly melt, burn, or vaporize, and the airflow extracts the molten residue. Laser Waist refers to the narrowest part of the laser beam near the focal point, affecting cutting precision. Focal point is the most concentrated and powerful point of the laser beam, located on or within the material. Kerf Width refers to the width of the material removed during laser cutting, affecting the fit of the final components.
+        At the Fab Lab, We use CO₂ laser cutting, which is suitable for materials such as wood, acrylic and cardboard.
+      </p>
+
+      <p>
+        This week, I made an egg holder 🥚. In FreeCAD, I used Spreadsheet to set parameters such as material thickness, kerf width, and egg diameter. First, I created a Part, then added a Body, and drew a hollow cylinder. Then I improvised the sketch for the support structure. I then rotated this support structure 90 degrees to create another support. Each of them is in a separate Part, and each Part contains one Body. Next, I figured out how to assemble them together and modeled the joints at the connection points. Finally, I exported them as a flat PDF drawing. The final result is shown in the image.
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/egg1.png" alt="egg1" width=30% title="egg1"/>
+          <figcaption>Structure</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/egg3.png" alt="egg3" width=40% title="egg3"/>
+          <figcaption>Model</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/egg2.png" alt="egg2" width=80% title="egg2"/>
+          <figcaption>PDF drawing</figcaption>
+        </figure>
+      </p>
+
+      <p>
+        For the Laser Cutting, I used Inkscape on the Fab Lab computer to open the PDF file, but there were many overlapping lines inside. However, after deleting them, I was still unable to print properly. After a long debugging process, we decided to open the PDF file with Adobe Illustrator. Since I was only cutting, I removed all fills and set the stroke to black with a width of 0.01mm. Before the actual cutting, I first cut a rectangle as a test to adjust the appropriate speed and ensure that the 4mm plywood board could be cut through. Then, I proceeded with the final cutting. I used the tested parameters, but the result did not cut through. After that, I lowered the speed, and the cut was successful.
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/Setting1.JPG" alt="Setting1" width=60% title="Setting1"/>
+          <figcaption>Setting1</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/Setting2.JPG" alt="Setting2" width=60% title="Setting2"/>
+          <figcaption>Setting2</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/EggMachine.JPG" alt="EggMachine" width=60% title="EggMachine"/>
+          <figcaption>Cutting Done</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/EggParts.JPG" alt="EggParts" width=80% title="EggParts"/>
+          <figcaption>Parts</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/Eggholder1.JPG" alt="Eggholder1" width=80% title="Eggholder1"/>
+          <figcaption>Eggholder1</figcaption>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/Eggholder2.jpg" alt="Eggholder2" width=80% title="Eggholder2"/>
+          <figcaption>Eggholder2</figcaption>
+        </figure>
+      </p>
+
+      <p>
+        <a href="zip/EggHolder-annie.zip" download>Download ZIP File</a>
+      </p>
+      <p>
+        
+
+      </p>
+      
+      <h2>Extra content</h2>
+      <p>
+        I've always wanted to laser cut some flexible wood, and I found a website that automatically generates boxes 
+        <a href="https://boxes.hackerspace-bamberg.de/?language=en" target="_blank">https://boxes.hackerspace-bamberg.de/?language=en</a>. 
+        So, I gave it a try and generated a blueprint of a box with flex. I used 3mm plywood for cutting, and here are the results:
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/boxparts.JPG" alt="boxparts" width=80% title="boxparts"/>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <video width=80% autoplay loop muted playsinlinep>
+            <source src="images/flex.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/bookbox1.JPG" alt="bookbox1" width=80% title="bookbox1"/>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/bookbox2.JPG" alt="bookbox2" width=80% title="bookbox2"/>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <video width=80% autoplay loop muted playsinlinep>
+            <source src="images/openbook.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+      </p>
+      
+    </div>
+    <br />
+
+    <a name="back"></a>
+    <h2>⬅<a href="index.html">Back</a></h2>
+    <br />
+
+    <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
+    <div class="footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://xuedan-gao.com/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+  <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
+       greater than the main content container.  Without this, when an a:hover is triggered in the main container,
+       IE reflows the page and cuts off the menu at the bottom of the main container. -->
+  <div class="spacer">
+  </div>
+
+</div>
+<!-- Layout container ends -->
+
+</body>
+</html>
