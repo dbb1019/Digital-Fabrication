@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="pat" />
+  <meta name="keywords" content="drifting, pat, OWD" />
+  <meta name="description" content="OWD winter template" />
+  <title>week5</title>
+
+  <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
+</head>
+
+<body>
+
+<!-- Layout container starts -->
+<div id="layoutBox">
+
+  <!-- HEADER: controls the header layout, images, title and subTitle. -->
+  <div id="headerBox">
+    <div id="headerLeftBox">
+      <span class="title">
+        Week 5
+      </span>
+      <br />
+      <span class="subTitle">
+        Embedded Programming
+      </span>
+    </div>
+    <div id="headerRightBox">
+      &nbsp;
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT : to add new headings, include a <h1> and then as many <p> blocks
+       as you'd like.  <h2> will create subheadings. To finish a section, include a
+       <br/> to clearly define it. -->
+  <div id="mainContent">
+    <a name="Week5"></a>
+    <h1>Week 5</h1>
+    <div class="mainContent">
+      <p>
+        MCU (Microcontroller) is a single-chip computer that integrates one or more processor cores (CPU), memory (RAM, ROM/Flash), and programmable input/output (I/O) interfaces.
+        MCUs can be applied in many fields, such as embedded systems, including household appliances; robotics, for controlling motor movements; and sensor-based systems, such as smart home applications, wearable systems and applications in the field of ubiquitous computing. They are also used in the game to create tangible interfaces. We often use Arduino and ESP32 for prototyping or creating interactive art installations.
+      </p>
+      <p>
+        Voltage, current, and resistance are fundamental concepts in electronics, and they are related through Ohm's Law: V = I × R. 
+        In this equation, V represents voltage (measured in volts, V), I represents current (measured in amperes, A), and R represents resistance (measured in ohms, Ω).
+        Voltage (V) is the potential difference that drives the flow of electric current, similar to water pressure in a pipe. 
+        Current (I) is the rate at which electric charge flows, comparable to the flow rate of water.
+        Resistance (R) limits the flow of current, much like a narrow section of a pipe that restricts water flow.
+      </p>
+      <p>
+        Place the pin headers on a breadboard, then position the XIAO board onto the headers. Use a flux pen to clean the surface before soldering. When soldering, use an appropriate temperature (typically 320-370°C) to avoid overheating and damaging components. Since solder releases fumes, turn on the fume extractor before starting the soldering process. Before soldering, dampen the sponge with water. Start by soldering the first and last pin, then proceed with the middle pins. After finishing, turn off all equipment. Finally, we can use a multimeter to check whether the solder joints are functioning correctly.
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/IMG_2461.JPG" alt="soldering" width=60% title="soldering"/>
+        </figure>
+        <figure style="text-align: center; width: 86%;">
+          <img src="images/IMG_2463.JPG" alt="soldering" width=60% title="soldering"/>
+        </figure>
+      </p>
+      <p>
+        The #define is used to define constants or macros, such as #define LED_PIN 13, which typically refers to the LED on Arduino's pin 13. The setup() function is the first part executed when the Arduino runs and is executed only once. It is usually used to set pin modes or initialize the port of serial communication. The loop() function is the main loop where Arduino continuously executes the code inside loop(), making it suitable for monitoring sensors, controlling motors, and more. The pinMode() function is used to specify whether a pin is set as an input (INPUT) or output (OUTPUT). The digitalWrite() function is used when a pin is set as OUTPUT, allowing it to output either a high voltage (HIGH) or a low voltage (LOW). Arduino supports various variable types, such as int, float, char, and bool. The if...else... statement is a conditional structure used to set specific conditions, such as turning on an LED when a button is pressed.
+      </p>
+      <p>
+        In Arduino, libraries provide pre-written code. Using libraries can simplify hardware control. For example, the Adafruit_NeoPixel library can easily control NeoPixel LEDs without having to manually write complex PWM control code.
+        <figure style="text-align: center; width: 86%;">
+          <video width=60% controls>
+            <source src="images/led.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+      </p>
+    <p>First, I included the <code>#include &lt;Adafruit_NeoPixel.h&gt;</code> library to use the NeoPixel functionalities.</p>
+    <p>Then, I initialized the NeoPixel in the <code>setup()</code> function:</p>
+    <p>
+        <code>Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);</code><br>
+        <code>pixels.begin();</code>
+    </p>
+    <p>Next, I defined a set of RGB colors:</p>
+    <p>
+        <code>
+        uint32_t colors[] = { <br>
+        &nbsp;&nbsp;pixels.Color(15, 25, 205), // Blue <br>
+        &nbsp;&nbsp;pixels.Color(103, 25, 205), // Purple <br>
+        &nbsp;&nbsp;pixels.Color(233, 242, 205), // White <br>
+        &nbsp;&nbsp;pixels.Color(233, 23, 23), // Red <br>
+        &nbsp;&nbsp;pixels.Color(12, 66, 101) // Cyan <br>
+        };
+        </code>
+    </p>
+    <p>I used <code>setPixelColor()</code> to select a color and <code>show()</code> to update the LED:</p>
+    <p>
+        <code>pixels.setPixelColor(0, pixels.Color(255, 0, 0));</code><br>
+        <code>pixels.show();</code>
+    </p>
+    <p>Finally, I used <code>digitalRead(Button)</code> to read the button state and a counter to cycle through the predefined colors.</p>
+    </div>
+    <br />
+
+    <a name="back"></a>
+    <h2>⬅<a href="index.html">Back</a></h2>
+    <br />
+
+    <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
+    <div class="footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://xuedan-gao.com/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+  <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
+       greater than the main content container.  Without this, when an a:hover is triggered in the main container,
+       IE reflows the page and cuts off the menu at the bottom of the main container. -->
+  <div class="spacer">
+  </div>
+
+</div>
+<!-- Layout container ends -->
+
+</body>
+</html>
