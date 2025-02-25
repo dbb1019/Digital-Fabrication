@@ -65,7 +65,9 @@
         The #define is used to define constants or macros, such as #define LED_PIN 13, which typically refers to the LED on Arduino's pin 13. The setup() function is the first part executed when the Arduino runs and is executed only once. It is usually used to set pin modes or initialize the port of serial communication. The loop() function is the main loop where Arduino continuously executes the code inside loop(), making it suitable for monitoring sensors, controlling motors, and more. The pinMode() function is used to specify whether a pin is set as an input (INPUT) or output (OUTPUT). The digitalWrite() function is used when a pin is set as OUTPUT, allowing it to output either a high voltage (HIGH) or a low voltage (LOW). Arduino supports various variable types, such as int, float, char, and bool. The if...else... statement is a conditional structure used to set specific conditions, such as turning on an LED when a button is pressed.
       </p>
       <p>
-        In Arduino, libraries provide pre-written code. Using libraries can simplify hardware control. For example, the Adafruit_NeoPixel library can easily control NeoPixel LEDs without having to manually write complex PWM control code.
+        An Arduino library is a set of pre-written code that can be used to control specific hardware (such as sensors, displays, communication modules, etc.) or perform specific computing tasks (such as filtering, mathematical calculations, data storage, etc.). Arduino comes with some standard libraries, and you can also install third-party libraries to expand its functionality.
+        We can install libraries using the Library Manager or by manually downloading a ZIP file.
+        For example, the Adafruit_NeoPixel library can easily control NeoPixel LEDs without having to manually write complex PWM control code.
         <figure style="text-align: center; width: 86%;">
           <video width=60% controls>
             <source src="images/led.mp4" type="video/mp4">
