@@ -40,7 +40,148 @@
     <a name="Week7"></a>
     <h1>Week 7</h1>
     <div class="mainContent">
-      
+      <p>
+        <b>Resistor</b>
+        <p>
+        Resistors limit the flow of charge in a circuit and act as voltage dividers. There are several types of resistors, such as ordinary resistors, sliding resistors (such as potentiometers), and photoresistors. The polarity of a resistor does not matter.
+        <figure style="text-align: center; width: 50%;">
+          <img src="images/resistorsym.png" alt="resistor" width=50% title="resistor"/>
+        </figure>
+        <figure style="text-align: center; width: 50%;">
+          <img src="images/resistor.png" alt="resistor" width=50% title="resistor"/>
+        </figure>
+        </p>
+      </p>
+      <p>
+        <b>Capacitor</b>
+        <p>
+          Capacitor is an energy storage element, and its core function is to store and release charge. It can be used for filtering in circuits, removing AC components and maintaining the stability of DC signals. It can also be used for coupling signals and blocking DC signals from passing through, such as audio amplifiers.
+          There are polarized capacitor where the circuit must be connected with the correct polarity and non polarized capacitor. 
+          <figure style="text-align: center; width: 50%;">
+            <img src="images/capacitor1.png" alt="capacitor" width=50% title="capacitor"/>
+          </figure>
+          <figure style="text-align: center; width: 50%;">
+            <img src="images/capacitor2.png" alt="capacitor" width=50% title="capacitor"/>
+          </figure>
+          <figure style="text-align: center; width: 50%;">
+            <img src="images/capacitor3.png" alt="capacitor" width=50% title="capacitor"/>
+          </figure>
+        </p>
+      </p>
+      <p>
+        <b>LED</b>
+        <p>LED (light emitting diode) is a semiconductor photoelectric device that emits light when current passes through it. It has unidirectional conductivity, and polarity determines its conductivity. It only conducts and emits light when forward biased, and does not emit light when reversed.
+          <figure style="text-align: center; width: 50%;">
+            <img src="images/led.png" alt="led" width=50% title="led"/>
+          </figure>
+        </p>
+      </p>
+      <p>
+        <b>Button</b>
+        <p>
+          A button or switch is a component used to control the on and off of a circuit. When the button is released, the input pin will be in an unstable state (floating), which can easily cause the circuit to be affected by noise and produce random high and low level signals, so a pull-up resistor or a pull-down resistor is needed. In this way, when the button is not pressed, the pull-up resistor makes the input pin to a high level, and the pull-down resistor makes the input pin to a low level.
+          <figure style="text-align: center; width: 50%;">
+            <img src="images/button1.png" alt="button1" width=50% title="button1"/>
+          </figure>
+          <figure style="text-align: center; width: 50%;">
+            <img src="images/button2.png" alt="button2" width=50% title="button2"/>
+          </figure>
+        </p>
+      </p>
+      <p>
+        <b>Transistor </b>
+        <p>
+          Transistor is a semiconductor electronic component used for signal amplification and switch control. It has three pins, namely base (B) - control current, collector (C) - output current and emitter (E) - current outflow or inflow terminal.
+          Transistor can amplify analog signals in audio. It is usually used as a switch in MCU to drive motors.
+          <figure style="text-align: center; width: 50%;">
+            <img src="images/transistor.png" alt="transistor" width=50% title="transistor"/>
+          </figure>
+        </p>
+      </p>
+    <p>
+      <p>
+        Open the link in the ppt, go to the KiCad official website and download the version you like to install KiCad.
+        <figure style="text-align: center; width: 50%;">
+          <img src="images/kicad.png" alt="kicad" width=50% title="kicad"/>
+        </figure>
+      </p>
+      <p>
+        Clone or download the fab library on gitlab to your local computer, put it in a location you feel happy with, and then locate the files in this folder in KiCad.
+        <figure style="text-align: center; width: 70%;">
+          <img src="images/fablibrary.png" alt="fablibrary" width=60% title="fablibrary"/>
+        </figure>
+      </p>
+      <p>
+        For the schematic symbol library, first open preferences then click manage symbol libraries. The click the folder icon, add existing library to table. Navigate to the cloned or downloaded repository, open the folder and select the .lib file from fab library.
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/Symbol.png" alt="Symbol" width=70% title="Symbol"/>
+        </figure>
+      </p>
+      <p>
+        For the footprint library, first open preferences then click manage footprint libraries. The click the folder icon, add existing library to table. Navigate to the cloned or downloaded repository, open the folder and select the .pretty file from fab library.
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/Footprint.png" alt="Footprint" width=70% title="Footprint"/>
+        </figure>
+      </p>
+      <p>
+        Then click configure path and add the fab library folder to the table.
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/Configurepath.png" alt="Configurepath" width=70% title="Configurepath"/>
+        </figure>
+      </p>
+      <p>
+        To view 3d model, open footprint editor, then select XIAO Generic SocketSMD footprint and click view in 3d viewer. 
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/xiao3d.png" alt="xiao3d" width=70% title="xiao3d"/>
+        </figure>
+      </p>
+    </p>
+    <p>
+      <p>
+        First, select XIAO Generic SocketSMD and connect the LED to pin 1. The LED is connected to a resistor, which acts as a current limiter to prevent the LED from burning. Then go to the official website of Xiao RP2040 to check Xiao RP2040. Pin 4 and 5 are SDA and SCL for I2C communication, so connect a 4-pin pin socket, and the other two are vcc and ground. Pin 6 and 7 are TX and RX for UART communication, so connect a 4-pin pin socket, and the other two are vcc and ground. Then use a pull-up resistor and a button to control the LED, and the button is connected to pin11. Then use labels to draw each part separately. Finally, four mount holes were added to facilitate the installation of the PCB board. Need to mark pwr_flag on the vccs and ground.
+      </p>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/rp2040.png" alt="rp2040" width=70% title="rp2040"/>
+      </figure>
+      <figure style="text-align: center; width: 86%;">
+        <img src="images/circuit.png" alt="circuit" width=100% title="circuit"/>
+      </figure>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/erule.png" alt="erulecheck" width=70% title="erulecheck"/>
+      </figure>
+    </p>
+    <p>
+      <p>
+        Net Classes are used to define the routing rules for different electrical signals to ensure safe spacing between routings, ensure the stability of the circuit and match the manufacturing materials and machines. First open PCB Editor and then open Board Setup to select Net Classes, and then set Track Width, Clearance and Via Size as shown in the figure.
+      </p>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/netclasses.png" alt="netclasses" width=70% title="netclasses"/>
+      </figure>
+      <p>
+        The layers of a PCB are used to define different parts of the board. We will use the copper layer (F.Cu) to place the wires and the Edge. Edge.Cuts Layer is the layer used to define the physical boundaries of the PCB. I also want to use Silkscreen Layer (F.Silkscreen) for marking component names and lettering.
+      </p>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/plot.png" alt="plot" width=70% title="plot"/>
+      </figure>
+      <p>
+        I click update from schematic view and the components will be displayed. I use r to rotate and drag with the mouse to place them where I like. Then I select edge.cuts layer to draw a shape. I made a cloud ☁️ shaped circuit board. Then it is connection and grounding. Draw wires to connect the corresponding interfaces, draw any shape you like, then draw a huge frame to frame the whole board and press b to make the whole board share the ground. Finally, I selected silkscreen layer and wrote Annie’s First PCB.
+      </p>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/pcb1.png" alt="pcb1" width=70% title="pcb1"/>
+      </figure>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/pcb2.png" alt="pcb2" width=70% title="pcb2"/>
+      </figure>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/pcb3.png" alt="pcb3" width=70% title="pcb3"/>
+      </figure>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/pcbcheck.png" alt="pcbcheck" width=70% title="pcbcheck"/>
+      </figure>
+    </p>
+    <p>
+      <a href="zip/demo A.zip" download>Download ZIP File</a>
+    </p>
     </div>
     <br />
 
