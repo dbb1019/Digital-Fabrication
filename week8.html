@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="pat" />
+  <meta name="keywords" content="drifting, pat, OWD" />
+  <meta name="description" content="OWD winter template" />
+  <title>week8</title>
+
+  <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
+</head>
+
+<body>
+
+<!-- Layout container starts -->
+<div id="layoutBox">
+
+  <!-- HEADER: controls the header layout, images, title and subTitle. -->
+  <div id="headerBox">
+    <div id="headerLeftBox">
+      <span class="title">
+        Week 8
+      </span>
+      <br />
+      <span class="subTitle">
+        Computer-Controlled Machining
+      </span>
+    </div>
+    <div id="headerRightBox">
+      &nbsp;
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT : to add new headings, include a <h1> and then as many <p> blocks
+       as you'd like.  <h2> will create subheadings. To finish a section, include a
+       <br/> to clearly define it. -->
+  <div id="mainContent">
+    <a name="Week8"></a>
+    <h1>Week 8</h1>
+    <div class="mainContent">
+      <p>
+        CNC machining uses a computer to control cutting tools to remove excess from solid materials to manufacture parts. CNC machining uses pre-written numerical control programs to accurately control the movement of machine tools to achieve high-precision manufacturing. Unlike additive manufacturing technologies such as 3D printing, CNC machining is subtractive manufacturing, which means that it processes materials through engraving, milling, etc., rather than stacking materials layer by layer. 3D printing is additive manufacturing. Laser cutting can generally cut two-dimensional wood boards, acrylics, etc. or some stickers. Compared with laser cutting, CNC machining can not only perform two-dimensional cutting, but also create three-dimensional shapes, and can use a variety of materials such as metal and wood.
+      </p>
+      <p>
+        Flute refers to the grooves on the tool for chip removal. The shape and number of each groove will affect the cutting performance and material removal rate of the tool. 2-Flute has strong chip removal ability and is suitable for soft materials; a larger number of grooves, such as 4-Flute, is suitable for hard materials such as steel. We use 2-flute tools for CNC milling. The shank is the cylindrical part of the tool used to fix it in the collet of the machine tool. The shaft refers to the part of the tool involved in cutting, that is, the part with the cutting edge. The collet is a conical device used to fix the shank. It also has different sizes depending on the size of the shank diameter. It is usually installed on the spindle and clamps the shank by shrinking to ensure that the tool does not loosen when rotating.
+      </p>
+      <p>
+        Feed Rate refers to how fast the tool moves relative to the workpiece, while Spindle Speed ​​refers to the number of revolutions per minute (RPM) of the tool.
+        The Horizontal Feed Rate is the speed at which the tool moves along the XY plane. The Vertical Feed Rate (plunge rate) is the speed at which the tool moves in the Z direction. The Vertical Feed Rate is usually one-fourth of the Horizontal Feed Rate.
+        Chip Load refers to the thickness of material cut by each cutting edge of the tool during each rotation (per tooth/per rotation).
+        Here is the formula: 
+        horizontal feed rate = number of flutes * chip load * spindle speed;
+        vertical feed rate = horizontal feed rate/4. 
+        Spindle speed is the frequency spindle can rotate around its axis (times per minute). 
+        Cut Depth of cut is the thickness of material removed by the tool in each cut. Tool: 6mm dia flat-end mill;
+        Depth of cut: 3mm (6mm / 2). 
+      </p>
+      <p>
+        This week I designed a rocking chair in FreeCAD that is made up of four parts. I used the Part Design Workbench. 
+        I wanted to try to make some interesting furniture by putting together different parts..
+        This week I designed a rocking chair made of four parts in FreeCAD. I used the Part Design Workbench. I wanted to try to make some interesting furniture by combining different parts.
+        I first designed the lower part of the chair, two structures that can rock together, and then designed a cylindrical seat. Then I wanted to make a handle to put food on and hold on, so I designed an irregular shape. I used finger joints to join them into a 3D structure. I used the Spreadsheet Workbench to define the thickness of the material, the width and height of the chair, and other parameters to perform parametric design so that I can adjust it later. Then I used Inkscape to create a 1200*1200 canvas, and used the Tech Draw Workbench to project these parts onto the canvas.       
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week8.png" alt="week8" width=70% title="week8"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week81.png" alt="week81" width=70% title="week81"/>
+        </figure>
+      </p>
+      <p>
+        <a href="zip/cnc2.FCStd.zip" download>Download ZIP File</a>
+      </p>
+      <p>
+        In CNC milling, two main softwares are involved. VCarve is used to create cutting paths and generate G-code, and Mach3 is used to read G-code and control CNC machines for processing. Profile Cut is to cut parts along the contour. Pocket Cut is used to dig grooves. Dog-Bone connection is to add fillets to the corners to accommodate the splicing structure. Tabs (bridge points) are to retain small connection points on the edge of the workpiece to prevent parts from falling off during processing. First, I imported the design file in VCarve. My design mainly used Profile Cut to generate two toolpaths, one inside and one outside. Inside is used to cut small holes inside the material, and outside is used for external contours. Then check the settings of machine tool feed rate and other parameters, add dog bones to each interface, and finally add tabs to prevent the cut material from moving and damaging the machine.
+        Then export G-code and load it in Mach3 software. Then turn on the exhaust of the CNC machine, install the tool, set the XYZ zero point, use the machine tool control panel to manually move the tool, and determine the starting position. Then I use a clamp to hold the material in place to ensure stability and prevent material movement. I run the G-code and the tool starts cutting. After the cutting is complete, I vacuum the chips and remove the workpiece. I then removed the tabs of material and then grind and assembled.
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week82.JPG" alt="week82" width=70% title="week82"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week83.JPG" alt="week83" width=70% title="week83"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week84.JPG" alt="week82" width=70% title="week82"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week85.JPG" alt="week83" width=70% title="week83"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week86.JPG" alt="week82" width=70% title="week82"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week87.JPG" alt="week83" width=70% title="week83"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week88.JPG" alt="week82" width=70% title="week82"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week89.JPG" alt="week83" width=70% title="week83"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week810.JPG" alt="week83" width=70% title="week83"/>
+        </figure>
+      </p>
+      <p>
+        But we also encountered some problems during the cutting process. We didn’t know why the material didn’t cut through the first time. Later, we used the same parameters to cut again and it was successful. So it is still very important to test before cutting to avoid wasting materials and time.
+      </p>
+      <p>
+        As for this chair, the final irregular handle design caused the center of gravity to be unstable. Since I had no prior design experience, this is something I need to consider in the future.
+      </p>
+    </div>
+    <br />
+
+    <a name="back"></a>
+    <h2>⬅<a href="index.html">Back</a></h2>
+    <br />
+
+    <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
+    <div class="footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://xuedan-gao.com/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+  <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
+       greater than the main content container.  Without this, when an a:hover is triggered in the main container,
+       IE reflows the page and cuts off the menu at the bottom of the main container. -->
+  <div class="spacer">
+  </div>
+
+</div>
+<!-- Layout container ends -->
+
+</body>
+</html>
