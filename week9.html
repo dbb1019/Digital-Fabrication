@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="pat" />
+  <meta name="keywords" content="drifting, pat, OWD" />
+  <meta name="description" content="OWD winter template" />
+  <title>week9</title>
+
+  <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
+</head>
+
+<body>
+
+<!-- Layout container starts -->
+<div id="layoutBox">
+
+  <!-- HEADER: controls the header layout, images, title and subTitle. -->
+  <div id="headerBox">
+    <div id="headerLeftBox">
+      <span class="title">
+        Week 9
+      </span>
+      <br />
+      <span class="subTitle">
+        Electronics Production
+      </span>
+    </div>
+    <div id="headerRightBox">
+      &nbsp;
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT : to add new headings, include a <h1> and then as many <p> blocks
+       as you'd like.  <h2> will create subheadings. To finish a section, include a
+       <br/> to clearly define it. -->
+  <div id="mainContent">
+    <a name="Week9"></a>
+    <h1>Week 9</h1>
+    <div class="mainContent">
+      <p>
+        Electronic product production includes designing, manufacturing and assembling circuit systems. The main PCB manufacturing methods include etching (chemical corrosion), milling (mechanical removal of copper layer) and laser processing. We used mechanical copper removal technology in the Fab Lab, which is a subtractive process. According to the number of layers, there are single-sided boards, double-sided boards and multi-layer boards. Commonly used materials include FR-4, CEM-1 and flexible materials. We used PR-4 single-sided boards when milling PCBs. 
+        The process of PCB milling involves steps such as engraving graphics, circuits, and drilling. After milling, we usually need to solder electronic part on the board and then program MCUs. 
+      </p>
+      <p>
+        PCB milling is a subtractive manufacturing process that removes the copper layer from a board to create circuit traces. A Gerber file is a digital format used to describe the layout of each PCB layer, including traces, edges, and drill holes. The general PCB milling process starts with designing the board in KiCad and generating the Gerber files. The key layers needed are the F.Cu (front copper) layer and the Edge.Cuts layer. These are combined into a single layer (F.Cu), and then the drill holes are generated as a separate Gerber file.
+
+        Next, import the F_Cu.gbr and PTH-drl.gbr into CopperCAM software. After importing, use the "Calculate Tool Paths" function to generate two paths.
+        
+        The most important tool parameters include tool type (engraving or drilling), diameter, engraving speed, and engraving and drilling cutting depth.
+        For engraving text, we choose the engrave option so that the tool only traces once.
+        For circuit paths, we set the number of successive contours to 4.
+        Finally, toolpaths are calculated and exported as separate .plt files for each tool.
+
+        Note: don't forget to add tabs before calculating tool paths.
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3030.JPG" alt="IMG_3030" width=70% title="IMG_3030"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3031.JPG" alt="IMG_3031" width=70% title="IMG_3031"/>
+        </figure>
+      </p>
+      <p>
+        The machine we used was a Bungard CCD. We first measured the thickness of the copper stock and the MDF board, and fixed the polished copper board on the MDF with paper tape. In CopperCAM, set the XY origin to (0,0) and generate two tool path files, T1.plt and T4.plt. T1 uses a V-Groove 60° tool (diameter 0.2mm, depth 0.1mm, speed 63000, feed 750), and T4 uses a spiral tool (diameter 0.8mm, depth 1.8mm, speed 63000, feed 400). The Z origin is set to the MDF thickness as the base, and the height plus the copper thickness as the material thickness. The XY origin is set manually and the copy position is set. Then load the tool paths in RoutePro 3000 one by one to run the milling operation.
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/machine.png" alt="CCD" width=70% title="CCD"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_2926.JPG" alt="IMG_2926" width=70% title="IMG_2926"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_2920.JPG" alt="IMG_2920" width=70% title="IMG_2920"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_2923.JPG" alt="IMG_2923" width=70% title="IMG_2923"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3034.JPG" alt="IMG_3034" width=70% title="IMG_3034"/>
+        </figure>
+      </p>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/pcb-final.png" alt="pcb-final" width=70% title="pcb-final"/>
+      </figure>
+      <p>
+        I first found the components according to the circuit diagram, such as resistors, LEDs, switches, etc. Then I placed them separately and soldered them in the corresponding positions on the circuit board, making sure the direction and polarity were correct. When soldering, use a flux pen on the soldering points of the circuit board, then apply a little tin on the circuit board, then gently move the original placement so that one side is fixed, and then solder the other side. During the soldering process, the main problem that occurred was that the solder joints formed bridges, causing short circuits; and it was difficult to solder small parts. To solve these problems, I used solder wicks to remove excess solder and re-solder the solder joints. I asked Kris for help with small components that were difficult to solder. When the soldering was completed, my circuit board did not work. Later, when I checked it with a multimeter, I found that the 5V pin had a short circuit. Finally, this problem was solved and my PCB board can work normally. 
+      </p>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/week9_soldering.JPG" alt="week9_soldering" width=70% title="week9_soldering"/>
+      </figure>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/week9_finalresult.JPG" alt="week9_finalresult" width=70% title="week9_finalresult"/>
+      </figure>
+      <figure style="text-align: center; width: 80%;">
+        <img src="images/IMG_3062.JPG" alt="IMG_3062" width=70% title="IMG_3062"/>
+      </figure>
+      <p>
+        I did not encounter any obvious problems in embedded programming, and the overall testing process went smoothly. After soldering, I tried to use the code in the Arduino IDE to test whether the components worked. My LED test went smoothly. Later, when I tested the code, I had a little out-of-body experience in my brain, which led me to mistakenly think that the button was broken. Later, I found that it might be my brain that was broken.
+        Since I used a button and two LED lights, I hope to implement a "press once to switch to a state" function, and control the on and off state of the LEDs in turn to form four combinations: all off, the first one on, the second one on, and all on. Finally, the button can be cycled through the four states each time it is pressed. The following is my code and a video of my test.
+      </p>
+      <p>
+        <pre><code>
+          const int BUTTON_PIN = D10; 
+          const int LED_PIN1 = D0;
+          const int LED_PIN2 = D1;
+
+          int counter = -1; 
+          int prevbtnState = LOW;
+
+          void setup() {
+            pinMode(BUTTON_PIN, INPUT);
+            pinMode(LED_PIN1, OUTPUT);
+            pinMode(LED_PIN2, OUTPUT);
+            Serial.begin(9600);
+          }
+
+          void updateCounter() {
+            int btnState = digitalRead(BUTTON_PIN);
+            
+            if(prevbtnState != btnState) {
+              if (btnState == HIGH) {
+                counter++;
+              }
+            }
+            prevbtnState = btnState;
+          }
+
+          void controlLEDs() {
+            if (counter % 4 == 0) {
+              digitalWrite(LED_PIN1, LOW);
+              digitalWrite(LED_PIN2, LOW);
+            }
+            
+            if (counter % 4 == 1) {
+              digitalWrite(LED_PIN1, HIGH);
+              digitalWrite(LED_PIN2, LOW);
+            }
+            
+            if (counter % 4 == 2) {
+              digitalWrite(LED_PIN1, LOW);
+              digitalWrite(LED_PIN2, HIGH);
+            }
+
+            if (counter % 4 == 3) {
+              digitalWrite(LED_PIN1, HIGH);
+              digitalWrite(LED_PIN2, HIGH);
+            }
+          }
+
+          void loop() {
+            updateCounter();
+            controlLEDs();
+            delay(10);
+          }
+          </code></pre>
+        
+          <figure style="text-align: center; width: 86%;">
+            <video width=60% controls>
+              <source src="images/week9.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </figure>
+      </p>
+
+    </div>
+    <br />
+
+    <a name="back"></a>
+    <h2>⬅<a href="index.html">Back</a></h2>
+    <br />
+
+    <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
+    <div class="footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://xuedan-gao.com/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+  <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
+       greater than the main content container.  Without this, when an a:hover is triggered in the main container,
+       IE reflows the page and cuts off the menu at the bottom of the main container. -->
+  <div class="spacer">
+  </div>
+
+</div>
+<!-- Layout container ends -->
+
+</body>
+</html>
