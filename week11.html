@@ -88,7 +88,7 @@
       </p>
 
       <p>
-        I also used a distance sensor. I used quick i2c connectors to connect the sensor to my custom pcb board. The SCL and SDA of the distance sensor are connected to the I2C (D4 and D5) pins of Seeed Xiao PR2040, VCC is connected to the 3.3V power supply, and GND is connected to the ground. I then installed the vl53l4cd library, and run the example code. And this is the result of my test point using the VL53L4CD example code. This uses another PCB I made, with a quick i2c socket, but not the final input and output device PCB. This board happened to be used when I shot the video.
+        I also used a distance sensor. I used quick i2c connectors to connect the sensor to my custom pcb board. The SCL and SDA of the distance sensor are connected to the I2C (D4 and D5) pins of Seeed Xiao PR2040, VCC is connected to the 3.3V power supply, and GND is connected to the ground. I then installed the vl53l4cd library, and run the example code. And this is the result of my test point using the VL53L4CD example code. This uses another PCB I made, with a quick i2c socket, but not the final input and output device PCB. This board happened to be used when I shot the video. But this board was broken later, it was suppose to control an neo pixel, it worked but i did not take a video. 
         Here is the code I use:
       <pre><code>
           #include &lt;Arduino.h&gt;
