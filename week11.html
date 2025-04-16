@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="pat" />
+  <meta name="keywords" content="drifting, pat, OWD" />
+  <meta name="description" content="OWD winter template" />
+  <title>week11</title>
+
+  <link rel="stylesheet" type="text/css" href="css/drifting_print.css" media="screen, tv, projection, print" />
+</head>
+
+<body>
+
+<!-- Layout container starts -->
+<div id="layoutBox">
+
+  <!-- HEADER: controls the header layout, images, title and subTitle. -->
+  <div id="headerBox">
+    <div id="headerLeftBox">
+      <span class="title">
+        Week 11
+      </span>
+      <br />
+      <span class="subTitle">
+        Input and Output Device
+      </span>
+    </div>
+    <div id="headerRightBox">
+      &nbsp;
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT : to add new headings, include a <h1> and then as many <p> blocks
+       as you'd like.  <h2> will create subheadings. To finish a section, include a
+       <br/> to clearly define it. -->
+  <div id="mainContent">
+    <a name="Week11"></a>
+    <h1>Week 11</h1>
+    <div class="mainContent">
+      <p>
+        In this assignment, I used several input devices: PN532 NFC card reader, VL53L4CD distance sensor, two buttons, and a potentiometer. 
+        The output devices include a servo motor and a stepper motor. 
+        I also designed a custom PCB for input and output. The PN532 module was tested using the old PCB, while the newly designed PCB was used to test the rest of the system. 
+        The VL53L4CD distance sensor is used to measure the target distance. When the distance is less than 100mm, the servo will rotate and automatically return to its position after 150 milliseconds. At the same time, the two servos can also be controlled by the two buttons on the PCB. The input of the potentiometer is used to adjust the speed of the stepper motor in real time.
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3133.JPG" alt="IMG_3133" width=70% title="IMG_3133"/>
+        </figure>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3134.JPG" alt="IMG_3134" width=70% title="IMG_3134"/>
+        </figure>
+      </p>
+      <p>
+        For the input device, here is an example where I used a PN532 NFC reader. First, I soldered the sensor pins to the module and set the dip switch on the bottom left of the module to I2C mode. Then, I downloaded and installed the Arduino Library for the PN532 and tested it with the following sample code. After uploading the code at first, the serial monitor did not output anything. After troubleshooting, I found that the module could not communicate due to poor contact. Later, I re-tightened the cable (even "plugged it hard"), and then the module worked successfully and began to read data stably.
+        For the PCB board, I used Pin 4 and Pin 5 from Seeed Xiao for I2C. This example using normal pin socket. I have a quick I2C connection on the board I built this week.
+        Here is an example for PN532 RFID Reader Using I2C:
+        <pre><code>
+          #include &lt;Wire.h&gt;
+          #include &lt;PN532_I2C.h&gt;
+          #include &lt;PN532.h&gt;
+          #include &lt;NfcAdapter.h&gt;
+          
+          void setup() {
+            Serial.begin(9600);
+            while (!Serial);
+            Serial.println("Initializing...");
+            nfc.begin();
+            Serial.println("PN532✅");
+          }
+          
+          void loop() {
+            if (nfc.tagPresent()) {
+              NfcTag tag = nfc.read();
+              Serial.print("UID: ");
+              Serial.println(tag.getUidString());
+            }
+            delay(1000);
+          }
+        </code></pre>
+        <figure style="text-align: center; width: 86%;">
+          <video width=60% controls>
+            <source src="images/IMG_3132.MOV" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+      </p>
+
+      <p>
+        I also used a distance sensor. I used quick i2c connectors to connect the sensor to my custom pcb board. The SCL and SDA of the distance sensor are connected to the I2C (D4 and D5) pins of Seeed Xiao PR2040, VCC is connected to the 3.3V power supply, and GND is connected to the ground. I then installed the vl53l4cd library, and run the example code. And this is the result of my test point using the VL53L4CD example code. This uses another PCB I made, with a quick i2c socket, but not the final input and output device PCB. This board happened to be used when I shot the video.
+        Here is the code I use:
+      <pre><code>
+          #include &lt;Arduino.h&gt;
+          #include &lt;Wire.h&gt;
+          #include &lt;vl53l4cd_class.h&gt;
+          #include &lt;string.h&gt;
+          #include &lt;stdlib.h&gt;
+          #include &lt;stdio.h&gt;
+          #include &lt;stdint.h&gt;
+          #include &lt;assert.h&gt;
+          #include &lt;stdlib.h&gt;
+          
+          #define DEV_I2C Wire
+          #define SerialPort Serial
+          
+          #ifndef LED_BUILTIN
+            #define LED_BUILTIN 13
+          #endif
+          #define LedPin LED_BUILTIN
+          
+          // Components.
+          VL53L4CD sensor_vl53l4cd_sat(&DEV_I2C, A1);
+          
+          /* Setup ---------------------------------------------------------------------*/
+          
+          void setup()
+          {
+            // Led.
+            pinMode(LedPin, OUTPUT);
+          
+            // Initialize serial for output.
+            SerialPort.begin(115200);
+            SerialPort.println("Starting...");
+          
+            // Initialize I2C bus.
+            DEV_I2C.begin();
+          
+            // Configure VL53L4CD satellite component.
+            sensor_vl53l4cd_sat.begin();
+          
+            // Switch off VL53L4CD satellite component.
+            sensor_vl53l4cd_sat.VL53L4CD_Off();
+          
+            //Initialize VL53L4CD satellite component.
+            sensor_vl53l4cd_sat.InitSensor();
+          
+            // Program the highest possible TimingBudget, without enabling the
+            // low power mode. This should give the best accuracy
+            sensor_vl53l4cd_sat.VL53L4CD_SetRangeTiming(200, 0);
+          
+            // Start Measurements
+            sensor_vl53l4cd_sat.VL53L4CD_StartRanging();
+          }
+          
+          void loop()
+          {
+            uint8_t NewDataReady = 0;
+            VL53L4CD_Result_t results;
+            uint8_t status;
+            char report[64];
+          
+            do {
+              status = sensor_vl53l4cd_sat.VL53L4CD_CheckForDataReady(&NewDataReady);
+            } while (!NewDataReady);
+          
+            //Led on
+            digitalWrite(LedPin, HIGH);
+          
+            if ((!status) && (NewDataReady != 0)) {
+              // (Mandatory) Clear HW interrupt to restart measurements
+              sensor_vl53l4cd_sat.VL53L4CD_ClearInterrupt();
+          
+              // Read measured distance. RangeStatus = 0 means valid data
+              sensor_vl53l4cd_sat.VL53L4CD_GetResult(&results);
+              snprintf(report, sizeof(report), "Status = %3u, Distance = %5u mm, Signal = %6u kcps/spad\r\n",
+                       results.range_status,
+                       results.distance_mm,
+                       results.signal_per_spad_kcps);
+              SerialPort.print(report);
+            }
+          
+            //Led off
+            digitalWrite(LedPin, LOW);
+          }          
+      </code></pre>
+        <figure style="text-align: center; width: 86%;">
+          <video width=60% controls>
+            <source src="images/IMG_3067.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+      </p>
+
+      <p>
+        This is my new pcb:
+      </p>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3073.JPG" alt="IMG_3073" width=70% title="IMG_3073"/>
+        </figure>
+
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3077.JPG" alt="IMG_3077" width=70% title="IMG_3077"/>
+        </figure>
+
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/IMG_3078.JPG" alt="IMG_3078" width=70% title="IMG_3078"/>
+        </figure>
+
+        <p>
+          Failure attemps 🤯
+          <figure style="text-align: center; width: 80%;">
+            <img src="images/IMG_3079.JPG" alt="IMG_3079" width=70% title="IMG_3079"/>
+          </figure>
+        </p>
+
+        <p>
+          The output devices I used are output devices are two servos, connected to the D8 and D7 pins of the development board, and controlled by the Arduino <code>Servo</code> library. The red wire of the servo is connected to 3.3V or 5V, the black wire is connected to GND, and the signal wire is connected to D8 and D7 respectively. 
+          I created 2 pinheaders for each servo, so that the servos can be connect directly to the board.
+          In the code, the default position of the servo is 0 degrees after initialization, and it automatically rotates to 180 degrees every 5 seconds, keeps for 150 milliseconds, and then returns. This cyclic action is used to verify that the servo is working properly. But in fact, it cannot rotate fully to 180 degrees, but because I want to simulate the effect of drumsticks, I think this is not bad, and the big servo feels very powerful.
+          <pre><code>
+              #include &lt;Servo.h&gt;
+
+              const int SERVO1_PIN = D8;
+              const int SERVO2_PIN = D7;
+              
+              Servo servo1;
+              Servo servo2;
+              
+              unsigned long lastActionTime1 = 0;
+              unsigned long lastActionTime2 = 0;
+              const unsigned long holdTime = 150;
+              
+              bool servo1Active = false;
+              bool servo2Active = false;
+              
+              void setup() {
+                servo1.attach(SERVO1_PIN);
+                servo2.attach(SERVO2_PIN);
+              
+                servo1.write(0);
+                servo2.write(0);
+              }
+              
+              void loop() {
+                static unsigned long lastTrigger = 0;
+                if (millis() - lastTrigger > 5000) {
+                  triggerServos();
+                  lastTrigger = millis();
+                }
+              
+                updateServoReset();
+              }
+              
+              void triggerServos() {
+                servo1.write(180);
+                servo2.write(180);
+                lastActionTime1 = millis();
+                lastActionTime2 = millis();
+                servo1Active = true;
+                servo2Active = true;
+              }
+              
+              void updateServoReset() {
+                unsigned long now = millis();
+                if (servo1Active && now - lastActionTime1 >= holdTime) {
+                  servo1.write(0);
+                  servo1Active = false;
+                }
+                if (servo2Active && now - lastActionTime2 >= holdTime) {
+                  servo2.write(0);
+                  servo2Active = false;
+                }
+              }
+              
+          </code></pre>
+          <figure style="text-align: center; width: 86%;">
+            <video width=60% controls>
+              <source src="images/IMG_3136.MOV" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </figure>
+        </p>
+
+        <p>
+          This is an example of output device does something based on the sensor input. 
+          I used two servo motors to simulate the movement of the striker in my final project. The servo will be installed in a fixed position and connected to a small stick or extension. When the servo is quickly rotated from 0° to a certain angle and then reset, a strike action will be generated. The system triggers the servo in two ways: one is button input, and the other is the VL53L4CD distance sensor. When the D2 or D6 button is pressed, the servo will rotate respectively; when the distance sensor detects an object less than 100mm approaching, the two servos will move at the same time, simulating the automatic response of the strike behavior (this function is just to complete the homework, I may not use it because the homework requires input to control output).
+          Here is the code:
+            <pre><code>
+                #include &lt;Arduino.h&gt;
+                #include &lt;Wire.h&gt;
+                #include &lt;Servo.h&gt;
+                #include &lt;vl53l4cd_class.h&gt;
+  
+                #define DEV_I2C Wire
+                #define SerialPort Serial
+                
+                const int BUTTON1_PIN = D2;
+                const int SERVO1_PIN  = D8;
+                const int BUTTON2_PIN = D6;
+                const int SERVO2_PIN  = D7;
+                
+                Servo servo1;
+                Servo servo2;
+                
+                int counter1 = -1;
+                int counter2 = -1;
+                int prevBtnState1 = LOW;
+                int prevBtnState2 = LOW;
+                
+                unsigned long lastActionTime1 = 0;
+                unsigned long lastActionTime2 = 0;
+                const unsigned long holdTime = 150;
+                
+                bool servo1Active = false;
+                bool servo2Active = false;
+                
+                VL53L4CD sensor_vl53l4cd_sat(&DEV_I2C, A1);
+                const int distanceThreshold = 100;
+                
+                void setup() {
+                  pinMode(BUTTON1_PIN, INPUT);
+                  pinMode(BUTTON2_PIN, INPUT);
+                  servo1.attach(SERVO1_PIN);
+                  servo2.attach(SERVO2_PIN);
+                  servo1.write(0);
+                  servo2.write(0);
+                
+                  SerialPort.begin(115200);
+                  SerialPort.println("Starting...");
+                
+                  DEV_I2C.begin();
+                  sensor_vl53l4cd_sat.begin();
+                  sensor_vl53l4cd_sat.VL53L4CD_Off();
+                  sensor_vl53l4cd_sat.InitSensor();
+                  sensor_vl53l4cd_sat.VL53L4CD_SetRangeTiming(200, 0);
+                  sensor_vl53l4cd_sat.VL53L4CD_StartRanging();
+                }
+                
+                void updateButtonTriggers() {
+                  int btnState1 = digitalRead(BUTTON1_PIN);
+                  if (prevBtnState1 != btnState1) {
+                    if (btnState1 == HIGH) {
+                      counter1++;
+                      servo1.write(180);
+                      lastActionTime1 = millis();
+                      servo1Active = true;
+                    }
+                    prevBtnState1 = btnState1;
+                  }
+                
+                  int btnState2 = digitalRead(BUTTON2_PIN);
+                  if (prevBtnState2 != btnState2) {
+                    if (btnState2 == HIGH) {
+                      counter2++;
+                      servo2.write(180);
+                      lastActionTime2 = millis();
+                      servo2Active = true;
+                    }
+                    prevBtnState2 = btnState2;
+                  }
+                }
+                
+                void updateDistanceTrigger() {
+                  uint8_t NewDataReady = 0;
+                  uint8_t status = sensor_vl53l4cd_sat.VL53L4CD_CheckForDataReady(&NewDataReady);
+                
+                  if (!status && NewDataReady) {
+                    VL53L4CD_Result_t results;
+                    sensor_vl53l4cd_sat.VL53L4CD_ClearInterrupt();
+                    sensor_vl53l4cd_sat.VL53L4CD_GetResult(&results);
+                
+                    SerialPort.print("Distance: ");
+                    SerialPort.print(results.distance_mm);
+                    SerialPort.println(" mm");
+                
+                    if (results.range_status == 0 && results.distance_mm < distanceThreshold) {
+                      if (!servo1Active && !servo2Active) {
+                        servo1.write(180);
+                        servo2.write(180);
+                        lastActionTime1 = millis();
+                        lastActionTime2 = millis();
+                        servo1Active = true;
+                        servo2Active = true;
+                      }
+                    }
+                  }
+                }
+                
+                void updateServoReset() {
+                  unsigned long now = millis();
+                  if (servo1Active && now - lastActionTime1 >= holdTime) {
+                    servo1.write(0);
+                    servo1Active = false;
+                  }
+                  if (servo2Active && now - lastActionTime2 >= holdTime) {
+                    servo2.write(0);
+                    servo2Active = false;
+                  }
+                }
+                
+                void loop() {
+                  updateButtonTriggers();
+                  updateDistanceTrigger();
+                  updateServoReset();
+                  delay(5);  
+                }
+                
+            </code></pre>
+          </p>
+          <p>
+            Button & Distance Sensor & 2 Servo Moters
+            <figure style="text-align: center; width: 86%;">
+              <video width=60% controls>
+                <source src="images/IMG_3083.MOV" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </figure>
+          </p>
+        </p>
+        
+        <p>
+          In the last task of using additional input and output devices, I first tested the PN532 RFID reader mentioned at the beginning. I also tried to use a potentiometer to control the speed of a stepper motor. Rotating the potentiometer will change the speed of the motor in real time, from 1 RPM to 50 RPM. This simulates the function of rotating part of my final project. I connected the potentiometer to the analog input D0 pin, and the stepper motor was connected through the TMC2208 stpper moter driver. The control pins are D1 (direction), D2 (step), and the microstepping subdivision is configured through D3 and D6. The potentiometer value is obtained through analogRead() and mapped to RPM using the map() function, and finally converted to the interval time of each step to control the speed. This code is modified from kris's example for stepper moter.
+
+          <pre><code>
+            #define STEP_PIN D2
+            #define DIR_PIN D1
+            #define CFG1_PIN D6
+            #define CFG2_PIN D3
+            #define POT_PIN D0  
+
+            unsigned long rpmMin = 1;
+            unsigned long rpmMax = 50;
+            unsigned long rpm = 1;
+            unsigned long stepsPerRevolution = 400;
+            unsigned long microsPerStep;
+            unsigned long lastStepTime = 0;
+
+            unsigned long getMicrosPerStep(unsigned long rpm, unsigned long stepsPerRev)
+            {
+              return 60000000UL / (rpm * stepsPerRev);  // 60s * 1,000,000μs
+            }
+
+            void setup() {
+              pinMode(STEP_PIN, OUTPUT);
+              pinMode(DIR_PIN, OUTPUT);
+              pinMode(CFG1_PIN, OUTPUT);
+              pinMode(CFG2_PIN, OUTPUT);
+              pinMode(POT_PIN, INPUT);
+
+              digitalWrite(DIR_PIN, LOW);
+
+              digitalWrite(CFG1_PIN, HIGH);
+              digitalWrite(CFG2_PIN, LOW);
+
+              rpm = rpmMin;
+              microsPerStep = getMicrosPerStep(rpm, stepsPerRevolution);
+            }
+
+            void loop() {
+              unsigned long now = micros();
+              unsigned long pot = analogRead(POT_PIN);  
+              unsigned long rpmNew = map(pot, 0, 1000, rpmMin, rpmMax);
+
+              if (rpmNew != rpm) {
+                rpm = rpmNew;
+                microsPerStep = getMicrosPerStep(rpm, stepsPerRevolution);
+              }
+
+              if (now - lastStepTime >= microsPerStep) {
+                step();
+                lastStepTime = now;
+              }
+            }
+
+            void step() {
+              digitalWrite(STEP_PIN, HIGH);
+              delayMicroseconds(microsPerStep / 2);
+              digitalWrite(STEP_PIN, LOW);
+              delayMicroseconds(microsPerStep / 2);
+            }
+          </code></pre>
+          Pot & Stepper Moter
+          <figure style="text-align: center; width: 86%;">
+            <video width=60% controls>
+              <source src="images/IMG_3080.MOV" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </figure>
+        </p>
+
+    </div>
+    <br />
+
+    <a name="back"></a>
+    <h2>⬅<a href="index.html">Back</a></h2>
+    <br />
+
+    <!-- FOOTER: whatever you want in here - maybe a last updated or breadcrumb? -->
+    <div class="footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://dbb1019.github.io/Digital-Fabrication/">Annie's Digital Fabrication Diary</a> by © <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://xuedan-gao.com/">Xuedan Gao</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:15px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+  <!-- BUG FIX: This corrects another IE rendering bug....  You notice it only when the menu container length is
+       greater than the main content container.  Without this, when an a:hover is triggered in the main container,
+       IE reflows the page and cuts off the menu at the bottom of the main container. -->
+  <div class="spacer">
+  </div>
+
+</div>
+<!-- Layout container ends -->
+
+</body>
+</html>
