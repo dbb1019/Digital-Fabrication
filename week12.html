@@ -44,9 +44,102 @@
         My final project is a turntable-like mechanical device that uses singing bowls to produce sound through striking and rubbing. I plan to integrate Bluetooth or Wi-Fi modules to connect the system wirelessly to a mobile device or computer interface. Then humans can adjust the rotation speed and switch between tapping and friction modes, and the remote control does not require physical interaction. Or it is possible to use multiple Seeed Xiao development boards and communicate wirelessly between them. But I think wireless communication is more suitable for transmitting some control signals. For audio signals, I still prefer to use wired methods or use products on the market (such as wireless microphones or speakers) to make interactive sound effects, so that better sound quality and more stable connections can be obtained. But wireless communication does make the cables neater and the system more beautiful, especially in the case of very, very many cables, for sound installations. So it still needs to be thought about.
       </p>
       <p>
-        
+        I followed the example on the official website, plugged the USB cable into the board first, then plugged the antenna into the board, and then installed the esp32 development library. After the installation was complete, I selected the xiao_esp32c3 board. Then I modified the official Wi-Fi sample code and filled in the name and password of the mobile hotspot, so that the board could connect to my mobile phone's hotspot network and be on the same network as my computer. After uploading the program, I opened the serial monitor, which showed that the board successfully connected to Wi-Fi and printed its IP address. Then, I entered the IP address in the computer browser, successfully accessed the web server built by ESP32-C3, and saw the returned HTML "Hello Annie! I'm xiao_esp32c3" on the page. Below are the screenshots and code.
+        <pre><code>
+            #include &lt;WiFi.h&gt;
+            #include &lt;WebServer.h&gt;
+            
+            const char* ssid = "Annie";
+            const char* password = "haha, I won't tell you the password.";
+            
+            WebServer server(80);
+            
+            void handleRoot() {
+              server.send(200, "text/html", "Hello Annie! I'm xiao_esp32c3");
+            }
+            
+            void setup() {
+              Serial.begin(115200);
+              WiFi.begin(ssid, password);
+              while (WiFi.status() != WL_CONNECTED) {
+                delay(500);
+                Serial.print(".");
+              }
+              Serial.println("\nWiFi connected!");
+              Serial.print("IP address: ");
+              Serial.println(WiFi.localIP());
+            
+              server.on("/", handleRoot);
+              server.begin();
+            }
+            
+            void loop() {
+              server.handleClient();
+            }
+        </code></pre>
+        <figure style="text-align: center; width: 80%;">
+          <img src="images/week12.png" alt="week12" width=70% title="week12"/>
+        </figure>
       </p>
-
+      
+      <p>
+        For sending data to the board, I used the on and off buttons in the browser to control the on and off of the LED on my custom PCB, which is connected to the D0 pin. I first connected the board to my Wi-Fi network and wrote html code to display a web page with two buttons and an LED title. When I click the button, the browser sends a /on or /off request to the ESP32, and the development board turns on or off the LED connected to the D0 pin according to the command received, thus realizing the control of the LED with the web browser.
+        <pre>
+          <code>
+              #include &lt;WiFi.h&gt;
+              #include &lt;WebServer.h&gt;
+              
+              const char* ssid = "Annie";
+              const char* password = "haha, I won't tell you the password.";
+              
+              WebServer server(80);
+              const int ledPin = D0;  
+              
+              void handleRoot() {
+                server.send(200, "text/html", 
+                "&lt;h1&gt;LED&lt;/h1&gt;&lt;button onclick=&quot;fetch('/on')&quot;&gt;on&lt;/button&gt;&lt;button onclick=&quot;fetch('/off')&quot;&gt;off&lt;/button&gt;");
+              }
+              
+              
+              void handleOn() {
+                digitalWrite(ledPin, HIGH);
+              }
+              
+              void handleOff() {
+                digitalWrite(ledPin, LOW);
+              }
+              
+              void setup() {
+                pinMode(ledPin, OUTPUT);
+                Serial.begin(115200);
+                WiFi.begin(ssid, password);
+                while (WiFi.status() != WL_CONNECTED) {
+                  delay(500);
+                  Serial.print(".");
+                }
+                Serial.println("\nConnected to WiFi");
+                Serial.print("IP address: ");
+                Serial.println(WiFi.localIP());
+              
+                server.on("/", handleRoot);
+                server.on("/on", handleOn);
+                server.on("/off", handleOff);
+                server.begin();
+              }
+              
+              void loop() {
+                server.handleClient();
+              }
+          </code>
+        </pre>
+        <figure style="text-align: center; width: 86%;">
+          <video width=60% controls>
+            <source src="images/IMG_3150.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+      </p>
+    
     </div>
     <br />
 
