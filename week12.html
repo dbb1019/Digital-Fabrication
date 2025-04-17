@@ -141,6 +141,66 @@
         </figure>
       </p>
     
+      <p>
+        For the task of receiving data, I still used the custom PCB board I made before, and received the physical input data from the button in the web server. The button is connected to the D10 pin. First, I connected the Arduino board to the wifi. In the Arduino code, I read the button status in real time through digitalRead(10). When the button is detected to be pressed (read as LOW), the words displayed on the html page will change to button pressed, otherwise it will display button not pressed. To update the web page, I refreshed the page every 0.2 second to get the data from the board in real time. Here is the code and the video. 
+        <pre>
+          <code>
+              #include &lt;WiFi.h&gt;
+              #include &lt;WebServer.h&gt;
+              
+              const char* ssid = "Annie";
+              const char* password = "haha, I won't tell you the password.";
+              
+              const int buttonPin = D10; 
+
+              WebServer server(80);
+
+              void setup() {
+                Serial.begin(115200);
+                pinMode(buttonPin, INPUT); 
+
+                WiFi.begin(ssid, password);
+
+                while (WiFi.status() != WL_CONNECTED) {
+                  delay(500);
+                  Serial.print(".");
+                }
+
+                Serial.println("\WIFI connected");
+                Serial.print("IP Address: ");
+                Serial.println(WiFi.localIP());
+
+                server.on("/", handleRoot);
+                server.begin();
+              }
+
+              void loop() {
+                server.handleClient();
+              }
+
+              void handleRoot() {
+                int buttonState = digitalRead(buttonPin);
+                String statusText = (buttonState == LOW) ? "Button Pressed" : "Button Not Pressed";
+
+                String html = "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset='UTF-8'&gt;";
+                html += "&lt;meta http-equiv='refresh' content='0.2'&gt;";  
+                html += "&lt;title&gt;Button State&lt;/title&gt;&lt;/head&gt;&lt;body&gt;";
+                html += "&lt;h1&gt;ESP32C3 Button State&lt;/h1&gt;";
+                html += "&lt;p&gt;Button State: &lt;strong&gt;" + statusText + "&lt;/strong&gt;&lt;/p&gt;";
+                html += "&lt;/body&gt;&lt;/html&gt;";
+
+                server.send(200, "text/html", html);
+              }
+          </code>
+        </pre>
+        <figure style="text-align: center; width: 86%;">
+          <video width=60% controls>
+            <source src="images/IMG_3153.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+      </p>
+
     </div>
     <br />
 
