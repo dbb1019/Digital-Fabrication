@@ -201,6 +201,55 @@
         </figure>
       </p>
 
+      <p>
+        Below is an example of me sending data from one board to another board receiving data. I first powered both boards and plugged them into the computer, then connected the TX (GPIO21) of one board to the RX (GPIO20) of another board, RX to the TX of another board, and GND to the GND of another board. Then I wrote two programs in Arduino IDE for each board, the sending board sends a "hello" every second, and the receiving board lights up the LED of the D0 pin for 100ms when receiving the message, to achieve the blinking of the LED of another board with the information of one board. Below is the code and video.
+        <br><br>
+        Send Board
+        <pre>
+          <code>
+            void setup() {
+              Serial.begin(115200);
+              Serial1.begin(9600, SERIAL_8N1, 20, 21);
+            }
+            
+            void loop() {
+              Serial1.println("hello");
+              Serial.println("Sent: hello");
+              delay(1000);
+            }
+          </code>
+        </pre>
+      </p>
+      <p>
+        Receive Board
+        <pre>
+          <code>
+            void setup() {
+              Serial.begin(115200);
+              Serial1.begin(9600, SERIAL_8N1, 20, 21);
+              pinMode(D0, OUTPUT);
+            }
+            
+            void loop() {
+              if (Serial1.available()) {
+                String msg = Serial1.readStringUntil('\n');
+                Serial.println("Received: " + msg);
+                digitalWrite(D0, HIGH);
+                delay(100);
+                digitalWrite(D0, LOW);
+              }
+            }
+          </code>
+        </pre>
+      
+      <figure style="text-align: center; width: 86%;">
+        <video width=60% controls>
+          <source src="images/IMG_3205.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </figure>
+      </p>
+
     </div>
     <br />
 
