@@ -302,11 +302,11 @@ ul {
 }
 
 .marquee li:nth-child(1) { top: 0%; left: 18%; }
-.marquee li:nth-child(2) { top: 5%; left: 55%; }
+.marquee li:nth-child(2) { top: 5%; left: 80%; }
 .marquee li:nth-child(3) { top: 30%; left: 40%; }
 .marquee li:nth-child(4) { top: 40%; left: 93%; }
 .marquee li:nth-child(5) { top: 50%; left: 35%; }
-.marquee li:nth-child(6) { top: 95%; left: 42% }
+.marquee li:nth-child(6) { top: 85%; left: 42% }
 .marquee li:nth-child(7) { top: 66%; left: 84%; }
 .marquee li:nth-child(8) { top: 80%; left: 12%; }
 .marquee li:nth-child(9) { top: 95%; left: 74%; }
